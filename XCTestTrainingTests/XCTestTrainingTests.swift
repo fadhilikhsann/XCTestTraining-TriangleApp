@@ -35,7 +35,7 @@ final class XCTestTrainingTests: XCTestCase {
 //        }
 //    }
     
-    func testInputTriangle() {
+    func testInvalidTriangleInput() {
         XCTAssertThrowsError(try Triangle(sideA: 2, sideB: 5, sideC: 7).getType()) {
             error in
             XCTAssertEqual(error as! TriangleError, TriangleError.invalidTriangle)
@@ -49,6 +49,10 @@ final class XCTestTrainingTests: XCTestCase {
             XCTAssertEqual(error as! TriangleError, TriangleError.invalidTriangle)
         }
         
+
+    }
+    
+    func testInvalidInput() {
         XCTAssertThrowsError(try Triangle(sideA: -2, sideB: 12, sideC: 7).getType()) {
             error in
             XCTAssertEqual(error as! TriangleError, TriangleError.invalidInput)
@@ -79,27 +83,35 @@ final class XCTestTrainingTests: XCTestCase {
         }
     }
     
-    func testTypeTriangle() {
+    func testTriangleSamaKaki() {
         XCTAssertEqual(try Triangle(sideA: 4, sideB: 4, sideC: 10).getType(), TriangleType.samaKaki)
         XCTAssertEqual(try Triangle(sideA: 6, sideB: 4, sideC: 6).getType(), TriangleType.samaKaki)
         XCTAssertEqual(try Triangle(sideA: 10, sideB: 3, sideC: 3).getType(), TriangleType.samaKaki)
-        
+    }
+    
+    func testTriangleSamaSisi() {
         XCTAssertEqual(try Triangle(sideA: 4, sideB: 4, sideC: 4).getType(), TriangleType.samaSisi)
         XCTAssertEqual(try Triangle(sideA: 6, sideB: 6, sideC: 6).getType(), TriangleType.samaSisi)
         XCTAssertEqual(try Triangle(sideA: 5, sideB: 5, sideC: 5).getType(), TriangleType.samaSisi)
-        
+    }
+    
+    func testTriangleSembarang() {
         XCTAssertEqual(try Triangle(sideA: 4, sideB: 5, sideC: 6).getType(), TriangleType.sembarang)
         XCTAssertEqual(try Triangle(sideA: 2, sideB: 4, sideC: 10).getType(), TriangleType.sembarang)
         XCTAssertEqual(try Triangle(sideA: 4, sideB: 2, sideC: 7).getType(), TriangleType.sembarang)
-        
+    }
+    
+    func testTriangleSikuSiku(){
         XCTAssertEqual(try Triangle(sideA: 6, sideB: 8, sideC: 10).getType(), TriangleType.sikuSiku)
+        XCTAssertEqual(try Triangle(sideA: 3, sideB: 4, sideC: 5).getType(), TriangleType.sikuSiku)
     }
 
-//    override func setUpWithError() throws {
-//        // Put setup code here. This method is called before the invocation of each test method in the class.
-//        viewController = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? ViewController)!
-//        _ = viewController.view
-//    }
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+        viewController = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? ViewController)!
+        _ = viewController.view
+    }
+    
 //    override func tearDownWithError() throws {
 //        // Put teardown code here. This method is called after the invocation of each test method in the class.
 //    }
