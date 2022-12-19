@@ -61,8 +61,9 @@ struct Triangle {
             sideC == sideB
         ) {
             return TriangleType.samaKaki
-        }
-        else {
+        } else if Double((sideA * sideA + sideB * sideB)).squareRoot() == Double(sideC) {
+            return TriangleType.sikuSiku
+        } else {
             return TriangleType.sembarang
         }
         
